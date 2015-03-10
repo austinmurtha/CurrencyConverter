@@ -13,8 +13,9 @@ class AMMainViewController: UIViewController {
     let conversionInput = UITextField()
     let convertFromRates = UISegmentedControl(items: CurrencyTypes.allValues())
     let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
-    let covertedInput = UILabel()
-    
+    let convertedInput = UILabel()
+    let currencyAPI = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP,PHP_USD")!
+
     enum CurrencyTypes: String {
         case
         USDollar = "USD",
@@ -36,6 +37,7 @@ class AMMainViewController: UIViewController {
         
         addConversionInputField()
         addCurrencyOptions()
+        
         //add more options
         convertFromRates.frame = CGRectZero
         convertFromRates.selectedSegmentIndex = 0
@@ -59,10 +61,16 @@ class AMMainViewController: UIViewController {
     }
     
     func addCurrencyOptions(){
-        convertFromRates.frame = CGRectZero
+        //convertFromRates.frame = CGRectZero
+        
+        convertedInput.text = "input"
         
         view.addSubview(convertFromRates)
         view.addSubview(convertToRates)
+        view.addSubview(convertedInput)
+        
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,6 +90,9 @@ class AMMainViewController: UIViewController {
         convertToRates.center.x = view.center.x
         convertToRates.center.y = minFrame * 0.60
         
+        convertedInput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
+        convertedInput.center.x = view.center.x
+        convertedInput.center.y = minFrame * 0.70
         
     }
     
