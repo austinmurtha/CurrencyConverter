@@ -13,8 +13,8 @@ class AMMainViewController: UIViewController {
     let conversionInput = UITextField()
     let convertFromRates = UISegmentedControl(items: CurrencyTypes.allValues())
     let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
-    let convertedInput = UILabel()
-    let currencyAPI = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP,PHP_USD")!
+    let convertedOutput = UILabel()
+    //let currencyAPI = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP,PHP_USD")!
 
     enum CurrencyTypes: String {
         case
@@ -36,13 +36,13 @@ class AMMainViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
         addConversionInputField()
-        addCurrencyOptions()
+        addCurrentRate()
+        addReturnrate()
+        returnOutput()  
         
         //add more options
-        convertFromRates.frame = CGRectZero
-        convertFromRates.selectedSegmentIndex = 0
-        convertFromRates.tintColor = UIColor.blackColor()
-        convertFromRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
+        
+        
         
     }
     
@@ -60,16 +60,26 @@ class AMMainViewController: UIViewController {
         
     }
     
-    func addCurrencyOptions(){
+    func addReturnrate(){
+        
+        convertToRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
+        view.addSubview(convertToRates)
+    }
+    
+    func returnOutput(){
+        
+        convertedOutput.text = "Output"
+        view.addSubview(convertedOutput)
+    }
+    
+    func addCurrentRate(){
         //convertFromRates.frame = CGRectZero
         
-        convertedInput.text = "input"
-        
+        convertFromRates.frame = CGRectZero
+        convertFromRates.selectedSegmentIndex = 0
+        convertFromRates.tintColor = UIColor.blackColor()
+        convertFromRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
         view.addSubview(convertFromRates)
-        view.addSubview(convertToRates)
-        view.addSubview(convertedInput)
-        
-        
         
     }
     
@@ -90,9 +100,9 @@ class AMMainViewController: UIViewController {
         convertToRates.center.x = view.center.x
         convertToRates.center.y = minFrame * 0.60
         
-        convertedInput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
-        convertedInput.center.x = view.center.x
-        convertedInput.center.y = minFrame * 0.70
+        convertedOutput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
+        convertedOutput.center.x = view.center.x
+        convertedOutput.center.y = minFrame * 0.70
         
     }
     
