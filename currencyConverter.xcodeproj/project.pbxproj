@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D92975221AAE2C6400C9FB8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975211AAE2C6400C9FB8F /* AppDelegate.swift */; };
-		D92975241AAE2C6400C9FB8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975231AAE2C6400C9FB8F /* ViewController.swift */; };
-		D92975271AAE2C6400C9FB8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92975251AAE2C6400C9FB8F /* Main.storyboard */; };
+		D92975221AAE2C6400C9FB8F /* AMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975211AAE2C6400C9FB8F /* AMAppDelegate.swift */; };
+		D92975241AAE2C6400C9FB8F /* AMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975231AAE2C6400C9FB8F /* AMMainViewController.swift */; };
 		D92975291AAE2C6400C9FB8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92975281AAE2C6400C9FB8F /* Images.xcassets */; };
 		D929752C1AAE2C6400C9FB8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D929752A1AAE2C6400C9FB8F /* LaunchScreen.xib */; };
 		D92975381AAE2C6400C9FB8F /* currencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975371AAE2C6400C9FB8F /* currencyConverterTests.swift */; };
@@ -28,9 +27,8 @@
 /* Begin PBXFileReference section */
 		D929751C1AAE2C6400C9FB8F /* currencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = currencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92975201AAE2C6400C9FB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D92975211AAE2C6400C9FB8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D92975231AAE2C6400C9FB8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D92975261AAE2C6400C9FB8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D92975211AAE2C6400C9FB8F /* AMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAppDelegate.swift; sourceTree = "<group>"; };
+		D92975231AAE2C6400C9FB8F /* AMMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMMainViewController.swift; sourceTree = "<group>"; };
 		D92975281AAE2C6400C9FB8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D929752B1AAE2C6400C9FB8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D92975311AAE2C6400C9FB8F /* currencyConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = currencyConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +75,8 @@
 		D929751E1AAE2C6400C9FB8F /* currencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				D92975211AAE2C6400C9FB8F /* AppDelegate.swift */,
-				D92975231AAE2C6400C9FB8F /* ViewController.swift */,
-				D92975251AAE2C6400C9FB8F /* Main.storyboard */,
+				D92975211AAE2C6400C9FB8F /* AMAppDelegate.swift */,
+				D92975231AAE2C6400C9FB8F /* AMMainViewController.swift */,
 				D92975281AAE2C6400C9FB8F /* Images.xcassets */,
 				D929752A1AAE2C6400C9FB8F /* LaunchScreen.xib */,
 				D929751F1AAE2C6400C9FB8F /* Supporting Files */,
@@ -161,6 +158,7 @@
 				TargetAttributes = {
 					D929751B1AAE2C6400C9FB8F = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = TKL857Y26M;
 					};
 					D92975301AAE2C6400C9FB8F = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -192,7 +190,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D92975271AAE2C6400C9FB8F /* Main.storyboard in Resources */,
 				D929752C1AAE2C6400C9FB8F /* LaunchScreen.xib in Resources */,
 				D92975291AAE2C6400C9FB8F /* Images.xcassets in Resources */,
 			);
@@ -212,8 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D92975241AAE2C6400C9FB8F /* ViewController.swift in Sources */,
-				D92975221AAE2C6400C9FB8F /* AppDelegate.swift in Sources */,
+				D92975241AAE2C6400C9FB8F /* AMMainViewController.swift in Sources */,
+				D92975221AAE2C6400C9FB8F /* AMAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +233,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D92975251AAE2C6400C9FB8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D92975261AAE2C6400C9FB8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D929752A1AAE2C6400C9FB8F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -336,9 +325,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = currencyConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -346,9 +337,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = currencyConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -405,6 +398,7 @@
 				D929753D1AAE2C6400C9FB8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D929753E1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "currencyConverterTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +407,7 @@
 				D92975401AAE2C6400C9FB8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
