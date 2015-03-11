@@ -13,9 +13,14 @@ class AMMainViewController: UIViewController {
     let conversionInput = UITextField()
     let convertFromRates = UISegmentedControl(items: CurrencyTypes.allValues())
     let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
+    
     let convertedOutput = UILabel()
     //let currencyAPI = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP,PHP_USD")!
 
+    var selectedCurrentCurrencyType = CurrencyTypes.USDollar
+    var selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+    
+    
     enum CurrencyTypes: String {
         case
         USDollar = "USD",
@@ -34,7 +39,8 @@ class AMMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        
+        convertToRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
+        convertFromRates.addTarget(self, action: "convertedCurrency:", forControlEvents: .ValueChanged)
         addConversionInputField()
         addCurrentRate()
         addReturnrate()
@@ -62,7 +68,7 @@ class AMMainViewController: UIViewController {
     
     func addReturnrate(){
         
-        convertToRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
+        
         view.addSubview(convertToRates)
     }
     
@@ -78,10 +84,68 @@ class AMMainViewController: UIViewController {
         convertFromRates.frame = CGRectZero
         convertFromRates.selectedSegmentIndex = 0
         convertFromRates.tintColor = UIColor.blackColor()
-        convertFromRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
         view.addSubview(convertFromRates)
         
     }
+    
+    
+    func baseCurrencyChange(sender: UISegmentedControl){
+        //Determine which currency was selected.
+        switch sender.selectedSegmentIndex {
+         case 0:
+            selectedCurrentCurrencyType = CurrencyTypes.USDollar
+            
+        case 1:
+            selectedCurrentCurrencyType = CurrencyTypes.EuropeanEuro
+            
+        case 2:
+            selectedCurrentCurrencyType = CurrencyTypes.BritishPound
+            
+        case 3:
+            selectedCurrentCurrencyType = CurrencyTypes.JapaneseYen
+            
+        default:
+            //Add popup message on screen that no value was selected
+            println("Please try again")
+        }
+        
+        //now that we have stored the selected f/x currency, we can printout the value that is loaded, irrespective of the switch statement.
+        //the switch should just work.
+        //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
+        //We need to get to the rawValue before we print to console.
+        println(selectedCurrentCurrencyType.rawValue)
+        
+    }
+    
+    func convertedCurrency(sender: UISegmentedControl){
+        //Determine which currency was selected.
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selectedConversionCurrencyType = CurrencyTypes.USDollar
+            
+        case 1:
+            selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+            
+        case 2:
+            selectedConversionCurrencyType = CurrencyTypes.BritishPound
+            
+        case 3:
+            selectedConversionCurrencyType = CurrencyTypes.JapaneseYen
+        default:
+            //Add popup message on screen that no value was selected
+            println("Please try again")
+        }
+        
+        //now that we have stored the selected f/x currency, we can printout the value that is loaded, irrespective of the switch statement.
+        //the switch should just work.
+        //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
+        //We need to get to the rawValue before we print to console.
+        println(selectedConversionCurrencyType.rawValue)
+        
+    }
+
+    
+    
     
     override func viewDidLayoutSubviews() {
         var minFrame = min(view.frame.width, view.frame.height)
