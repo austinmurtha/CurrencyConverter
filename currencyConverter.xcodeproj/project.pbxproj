@@ -12,6 +12,7 @@
 		D92975291AAE2C6400C9FB8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92975281AAE2C6400C9FB8F /* Images.xcassets */; };
 		D929752C1AAE2C6400C9FB8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D929752A1AAE2C6400C9FB8F /* LaunchScreen.xib */; };
 		D92975381AAE2C6400C9FB8F /* currencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92975371AAE2C6400C9FB8F /* currencyConverterTests.swift */; };
+		D9A78AD51AB47CF10073E345 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A78AD41AB47CF10073E345 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		D92975311AAE2C6400C9FB8F /* currencyConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = currencyConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92975361AAE2C6400C9FB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D92975371AAE2C6400C9FB8F /* currencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencyConverterTests.swift; sourceTree = "<group>"; };
+		D9A78AD41AB47CF10073E345 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currency.swift; path = Images.xcassets/Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				D92975211AAE2C6400C9FB8F /* AMAppDelegate.swift */,
 				D92975231AAE2C6400C9FB8F /* AMMainViewController.swift */,
+				D9A78AD41AB47CF10073E345 /* Currency.swift */,
 				D92975281AAE2C6400C9FB8F /* Images.xcassets */,
 				D929752A1AAE2C6400C9FB8F /* LaunchScreen.xib */,
 				D929751F1AAE2C6400C9FB8F /* Supporting Files */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A78AD51AB47CF10073E345 /* Currency.swift in Sources */,
 				D92975241AAE2C6400C9FB8F /* AMMainViewController.swift in Sources */,
 				D92975221AAE2C6400C9FB8F /* AMAppDelegate.swift in Sources */,
 			);

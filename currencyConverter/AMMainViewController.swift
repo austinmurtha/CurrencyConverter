@@ -15,13 +15,19 @@ class AMMainViewController: UIViewController {
     let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
     
     let convertedOutput = UILabel()
-    //let currencyAPI = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP,PHP_USD")!
-
+    
     var selectedCurrentCurrencyType = CurrencyTypes.USDollar
     var selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+    var id: String?
+    var from: String?
+    var to: String?
+    var val: Int?
+    var exchangeRate: Double!
+
     
     
-    enum CurrencyTypes: String {
+    
+enum CurrencyTypes: String {
         case
         USDollar = "USD",
         EuropeanEuro = "EUR",
@@ -44,14 +50,56 @@ class AMMainViewController: UIViewController {
         addConversionInputField()
         addCurrentRate()
         addReturnrate()
-        returnOutput()  
+        returnOutput()
+        getCurrencyData()
+        println(self.exchangeRate)
         
         //add more options
-        
-        
-        
     }
     
+    func getCurrencyData() {
+        //http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP
+        let convertToRates = "convert?q=USD_EUR"
+        let baseURL = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/")
+        let currencyURL = NSURL(string: "\(convertToRates)", relativeToURL: baseURL)
+        let sharedSession = NSURLSession.sharedSession()
+        println(sharedSession)
+        println(currencyURL)
+        let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(currencyURL!, completionHandler: { ( location: NSURL!, response:NSURLResponse!, error: NSError!) -> Void in
+        let dataObject = NSData(contentsOfURL: location!)
+            println(dataObject)
+        let currencyDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
+            if let results = currencyDictionary["results"] as? NSDictionary {
+            println(results)
+                if let results2 = results["USD_EUR"] as? NSDictionary {
+                    println(results2)
+                    if let multiplierRate = results2["val"] as? Double{
+                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.exchangeRate = multiplierRate
+                            println(self.exchangeRate)
+                        })
+                    }
+                }
+                
+            }
+            
+        })
+        downloadTask.resume()
+    }
+    
+    
+//    func getAsynchData() -> NSData {
+//        var dataOutput : NSData
+//        let url:NSURL = NSURL(string:"some url")
+//        let request:NSURLRequest = NSURLRequest(URL:url)
+//        let queue:NSOperationQueue = NSOperationQueue()
+//        
+//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//            /* this next line gives the below error */
+//            dataOutput = data
+//        })
+//        return dataOutput
+//    }
     func addConversionInputField(){
         conversionInput.frame = CGRectZero
         conversionInput.layer.borderWidth = 1.0
@@ -125,6 +173,7 @@ class AMMainViewController: UIViewController {
             
         case 1:
             selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+            //convertedOutput.text = conversionInput * multipierRate
             
         case 2:
             selectedConversionCurrencyType = CurrencyTypes.BritishPound
@@ -143,9 +192,6 @@ class AMMainViewController: UIViewController {
         println(selectedConversionCurrencyType.rawValue)
         
     }
-
-    
-    
     
     override func viewDidLayoutSubviews() {
         var minFrame = min(view.frame.width, view.frame.height)
@@ -158,7 +204,7 @@ class AMMainViewController: UIViewController {
         
         convertFromRates.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
         convertFromRates.center.x = view.center.x
-        convertFromRates.center.y = minFrame * 0.50
+        convertFromRates.center.y =  conversionInput.center.y + minFrame * 0.20
     
         convertToRates.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
         convertToRates.center.x = view.center.x
