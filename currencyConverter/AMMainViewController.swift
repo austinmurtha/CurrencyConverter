@@ -31,8 +31,8 @@ enum CurrencyTypes: String {
         case
         USDollar = "USD",
         EuropeanEuro = "EUR",
-        BritishPound = "GPB",
-        JapaneseYen = "YEN"
+        BritishPound = "GBP",
+        JapaneseYen = "JPY"
         
         static func allValues() -> [String] {
             return [USDollar.rawValue,
@@ -104,12 +104,14 @@ enum CurrencyTypes: String {
         }
         else {
             getCurrencyData(baseCurrency: baseCurrencySelection.rawValue, foreignCurrency: foreignCurrencySelection.rawValue) { (result) -> Void in
+                println(self.baseCurrencySelection.rawValue)
+                println(self.foreignCurrencySelection.rawValue)
                 println(self.conversionInput.text)
                 if let exchangeRate = result {
                     let localAmount = (self.conversionInput.text as NSString).doubleValue
                     let finalAmount = localAmount * exchangeRate
                     self.convertedOutput.text = String(format:"%.3f", finalAmount)
-                    println(exchangeRate)
+                    println("In currenctData \(exchangeRate)")
                 }
             }
 
