@@ -16,8 +16,8 @@ class AMMainViewController: UIViewController {
     
     let convertedOutput = UITextField()
     
-    var selectedCurrentCurrencyType = CurrencyTypes.USDollar
-    var selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+    var baseCurrencySelection = CurrencyTypes.USDollar
+    var foreignCurrencySelection = CurrencyTypes.EuropeanEuro
     var id: String?
     var from: String?
     var to: String?
@@ -104,7 +104,7 @@ enum CurrencyTypes: String {
             println("Same value selected")
         }
         else {
-            getCurrencyData(baseCurrency: selectedCurrentCurrencyType.rawValue, foreignCurrency: selectedConversionCurrencyType.rawValue) { (result) -> Void in
+            getCurrencyData(baseCurrency: baseCurrencySelection.rawValue, foreignCurrency: foreignCurrencySelection.rawValue) { (result) -> Void in
                 if let exchangeRate = result {
                     let localAmount = (self.conversionInput.text as NSString).doubleValue
                     let finalAmount = localAmount * exchangeRate
@@ -158,15 +158,15 @@ enum CurrencyTypes: String {
         //Determine which currency was selected.
         switch sender.selectedSegmentIndex {
          case 0:
-            selectedCurrentCurrencyType = CurrencyTypes.USDollar
+            baseCurrencySelection = CurrencyTypes.USDollar
         case 1:
-            selectedCurrentCurrencyType = CurrencyTypes.EuropeanEuro
+            baseCurrencySelection = CurrencyTypes.EuropeanEuro
             
         case 2:
-            selectedCurrentCurrencyType = CurrencyTypes.BritishPound
+            baseCurrencySelection = CurrencyTypes.BritishPound
             
         case 3:
-            selectedCurrentCurrencyType = CurrencyTypes.JapaneseYen
+            baseCurrencySelection = CurrencyTypes.JapaneseYen
             
         default:
             //Add popup message on screen that no value was selected
@@ -177,7 +177,7 @@ enum CurrencyTypes: String {
         //the switch should just work.
         //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
         //We need to get to the rawValue before we print to console.
-        println(selectedCurrentCurrencyType.rawValue)
+        println(baseCurrencySelection.rawValue)
         performConversion()
         println("base Conversion performed")
         
@@ -187,17 +187,17 @@ enum CurrencyTypes: String {
         //Determine which currency was selected.
         switch sender.selectedSegmentIndex {
         case 0:
-            selectedConversionCurrencyType = CurrencyTypes.USDollar
+            foreignCurrencySelection = CurrencyTypes.USDollar
             
         case 1:
-            selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
+            foreignCurrencySelection = CurrencyTypes.EuropeanEuro
             //convertedOutput.text = conversionInput * multipierRate
             
         case 2:
-            selectedConversionCurrencyType = CurrencyTypes.BritishPound
+            foreignCurrencySelection = CurrencyTypes.BritishPound
             
         case 3:
-            selectedConversionCurrencyType = CurrencyTypes.JapaneseYen
+            foreignCurrencySelection = CurrencyTypes.JapaneseYen
         default:
             //Add popup message on screen that no value was selected
             println("Please try again")
@@ -207,7 +207,7 @@ enum CurrencyTypes: String {
         //the switch should just work.
         //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
         //We need to get to the rawValue before we print to console.
-        println(selectedConversionCurrencyType.rawValue)
+        println(foreignCurrencySelection.rawValue)
         performConversion()
         println("base Conversion performed")
         
