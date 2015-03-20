@@ -11,8 +11,8 @@ import UIKit
 class AMMainViewController: UIViewController {
     
     let conversionInput = UITextField()
-    let convertFromRates = UISegmentedControl(items: CurrencyTypes.allValues())
-    let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
+    let baseRate = UISegmentedControl(items: CurrencyTypes.allValues())
+    let foreignRate = UISegmentedControl(items: CurrencyTypes.allValues())
     
     let convertedOutput = UITextField()
     
@@ -45,11 +45,11 @@ enum CurrencyTypes: String {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        convertToRates.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
-        convertFromRates.addTarget(self, action: "convertedCurrency:", forControlEvents: .ValueChanged)
+        baseRate.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
+        foreignRate.addTarget(self, action: "convertedCurrency:", forControlEvents: .ValueChanged)
         addConversionInputField()
-        addCurrentRate()
-        addReturnrate()
+        addBaseRate()
+        addForeignRate()
         returnOutput()
         performConversion()
         
@@ -98,13 +98,13 @@ enum CurrencyTypes: String {
     func performConversion(){
         //1. Amount
         let inputAmount = conversionInput.text
-        
-        if convertFromRates == convertToRates {
+        if baseRate.selectedSegmentIndex == foreignRate.selectedSegmentIndex {
             convertedOutput.text = conversionInput.text
             println("Same value selected")
         }
         else {
             getCurrencyData(baseCurrency: baseCurrencySelection.rawValue, foreignCurrency: foreignCurrencySelection.rawValue) { (result) -> Void in
+                println(self.conversionInput.text)
                 if let exchangeRate = result {
                     let localAmount = (self.conversionInput.text as NSString).doubleValue
                     let finalAmount = localAmount * exchangeRate
@@ -131,10 +131,20 @@ enum CurrencyTypes: String {
         
     }
     
-    func addReturnrate(){
+    func addBaseRate(){
+        //convertFromRates.frame = CGRectZero
         
-        convertToRates.selectedSegmentIndex = 1
-        view.addSubview(convertToRates)
+        baseRate.frame = CGRectZero
+        baseRate.selectedSegmentIndex = 0
+        baseRate.tintColor = UIColor.blackColor()
+        view.addSubview(baseRate)
+        
+    }
+    
+    func addForeignRate(){
+        
+        foreignRate.selectedSegmentIndex = 1
+        view.addSubview(foreignRate)
     }
     
     func returnOutput(){
@@ -142,16 +152,7 @@ enum CurrencyTypes: String {
         convertedOutput.text = "Output"
         view.addSubview(convertedOutput)
     }
-    
-    func addCurrentRate(){
-        //convertFromRates.frame = CGRectZero
-        
-        convertFromRates.frame = CGRectZero
-        convertFromRates.selectedSegmentIndex = 0
-        convertFromRates.tintColor = UIColor.blackColor()
-        view.addSubview(convertFromRates)
-        
-    }
+
     
     
     func baseCurrencyChange(sender: UISegmentedControl){
@@ -179,7 +180,7 @@ enum CurrencyTypes: String {
         //We need to get to the rawValue before we print to console.
         println(baseCurrencySelection.rawValue)
         performConversion()
-        println("base Conversion performed")
+        println("base conversion performed")
         
     }
     
@@ -209,7 +210,7 @@ enum CurrencyTypes: String {
         //We need to get to the rawValue before we print to console.
         println(foreignCurrencySelection.rawValue)
         performConversion()
-        println("base Conversion performed")
+        println("Foreign Conversion performed")
         
     }
     
@@ -222,13 +223,13 @@ enum CurrencyTypes: String {
         conversionInput.center.y = minFrame * 0.15
         conversionInput.frame.maxY
         
-        convertFromRates.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
-        convertFromRates.center.x = view.center.x
-        convertFromRates.center.y =  conversionInput.center.y + minFrame * 0.20
+        baseRate.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
+        baseRate.center.x = view.center.x
+        baseRate.center.y =  conversionInput.center.y + minFrame * 0.20
     
-        convertToRates.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
-        convertToRates.center.x = view.center.x
-        convertToRates.center.y = minFrame * 0.60
+        foreignRate.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
+        foreignRate.center.x = view.center.x
+        foreignRate.center.y = minFrame * 0.60
         
         convertedOutput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
         convertedOutput.center.x = view.center.x
