@@ -23,7 +23,6 @@ class AMMainViewController: UIViewController {
     var to: String?
     var val: Int?
     var exchangeRate: Double!
-    var dumbQuestion: String?
 
     
     
@@ -92,53 +91,8 @@ enum CurrencyTypes: String {
                 }
                 
                 }.resume()
-        }
-        
-        
-        
-        
-        
-        //let baseURL = NSURL(string: )
-        
-//        let currencyURL = NSURL(string: completeURL)
-//        let sharedSession = NSURLSession.sharedSession()
-//      
-//        let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(currencyURL!, completionHandler: { ( location: NSURL!, response:NSURLResponse!, error: NSError!) -> Void in
-//        let dataObject = NSData(contentsOfURL: location!)
-//            println(dataObject)
-//        let currencyDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
-//            if let results = currencyDictionary["results"] as? NSDictionary {
-//            println(results)
-//                if let results2 = results["USD_EUR"] as? NSDictionary {
-//                    println(results2)
-//                    if let multiplierRate = results2["val"] as? Double{
-//                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            println("MultiplerRate \(multiplierRate)")
-//                            //return multiplierRate
-//                        })
-//                    }
-//                }
-//                
-//            }
-//            
-//        })
-//        downloadTask.resume()
-    
+            }
     }
-    
-    
-//    func getAsynchData() -> NSData {
-//        var dataOutput : NSData
-//        let url:NSURL = NSURL(string:"some url")
-//        let request:NSURLRequest = NSURLRequest(URL:url)
-//        let queue:NSOperationQueue = NSOperationQueue()
-//        
-//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//            /* this next line gives the below error */
-//            dataOutput = data
-//        })
-//        return dataOutput
-//    }
     
     
     func performConversion(){
@@ -147,9 +101,10 @@ enum CurrencyTypes: String {
         
         if convertFromRates == convertToRates {
             convertedOutput.text = conversionInput.text
+            println("Same value selected")
         }
         else {
-            getCurrencyData(baseCurrency: "EUR", foreignCurrency: "USD") { (result) -> Void in
+            getCurrencyData(baseCurrency: selectedCurrentCurrencyType.rawValue, foreignCurrency: selectedConversionCurrencyType.rawValue) { (result) -> Void in
                 if let exchangeRate = result {
                     let localAmount = (self.conversionInput.text as NSString).doubleValue
                     let finalAmount = localAmount * exchangeRate
@@ -166,7 +121,7 @@ enum CurrencyTypes: String {
         conversionInput.frame = CGRectZero
         conversionInput.layer.borderWidth = 1.0
         conversionInput.layer.borderColor = UIColor.blackColor().CGColor
-        conversionInput.text = "Hello"
+        conversionInput.text = String(format: "%0.2f", 1.0)
         conversionInput.textAlignment = .Right
         conversionInput.layer.cornerRadius = 5.0
         conversionInput.sizeToFit()
@@ -178,7 +133,7 @@ enum CurrencyTypes: String {
     
     func addReturnrate(){
         
-        
+        convertToRates.selectedSegmentIndex = 1
         view.addSubview(convertToRates)
     }
     
@@ -204,7 +159,6 @@ enum CurrencyTypes: String {
         switch sender.selectedSegmentIndex {
          case 0:
             selectedCurrentCurrencyType = CurrencyTypes.USDollar
-            
         case 1:
             selectedCurrentCurrencyType = CurrencyTypes.EuropeanEuro
             
@@ -224,6 +178,7 @@ enum CurrencyTypes: String {
         //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
         //We need to get to the rawValue before we print to console.
         println(selectedCurrentCurrencyType.rawValue)
+        performConversion()
         
     }
     
@@ -252,6 +207,7 @@ enum CurrencyTypes: String {
         //enums are structs (mini class). They are not String but they have a rawValue which can be of Type String. Our enum has String RawValues.
         //We need to get to the rawValue before we print to console.
         println(selectedConversionCurrencyType.rawValue)
+        performConversion()
         
     }
     
