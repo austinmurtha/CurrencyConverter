@@ -179,6 +179,7 @@ enum CurrencyTypes: String {
         //We need to get to the rawValue before we print to console.
         println(selectedCurrentCurrencyType.rawValue)
         performConversion()
+        println("base Conversion performed")
         
     }
     
@@ -208,6 +209,7 @@ enum CurrencyTypes: String {
         //We need to get to the rawValue before we print to console.
         println(selectedConversionCurrencyType.rawValue)
         performConversion()
+        println("base Conversion performed")
         
     }
     
