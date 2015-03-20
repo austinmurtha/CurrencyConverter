@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,23 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D929751B1AAE2C6400C9FB8F"
-               BuildableName = "currencyConverter.app"
-               BlueprintName = "currencyConverter"
-               ReferencedContainer = "container:currencyConverter.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D92975301AAE2C6400C9FB8F"
-               BuildableName = "currencyConverterTests.xctest"
-               BlueprintName = "currencyConverterTests"
-               ReferencedContainer = "container:currencyConverter.xcodeproj">
+               BuildableName = "CurrencyConverter.temp_caseinsensitive_rename.app"
+               BlueprintName = "CurrencyConverter.temp_caseinsensitive_rename"
+               ReferencedContainer = "container:CurrencyConverter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D92975301AAE2C6400C9FB8F"
-               BuildableName = "currencyConverterTests.xctest"
-               BlueprintName = "currencyConverterTests"
-               ReferencedContainer = "container:currencyConverter.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D929751B1AAE2C6400C9FB8F"
-            BuildableName = "currencyConverter.app"
-            BlueprintName = "currencyConverter"
-            ReferencedContainer = "container:currencyConverter.xcodeproj">
+            BuildableName = "CurrencyConverter.temp_caseinsensitive_rename.app"
+            BlueprintName = "CurrencyConverter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:CurrencyConverter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +48,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D929751B1AAE2C6400C9FB8F"
-            BuildableName = "currencyConverter.app"
-            BlueprintName = "currencyConverter"
-            ReferencedContainer = "container:currencyConverter.xcodeproj">
+            BuildableName = "CurrencyConverter.temp_caseinsensitive_rename.app"
+            BlueprintName = "CurrencyConverter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:CurrencyConverter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +67,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D929751B1AAE2C6400C9FB8F"
-            BuildableName = "currencyConverter.app"
-            BlueprintName = "currencyConverter"
-            ReferencedContainer = "container:currencyConverter.xcodeproj">
+            BuildableName = "CurrencyConverter.temp_caseinsensitive_rename.app"
+            BlueprintName = "CurrencyConverter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:CurrencyConverter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

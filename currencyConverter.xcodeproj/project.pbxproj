@@ -26,13 +26,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D929751C1AAE2C6400C9FB8F /* currencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = currencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D929751C1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92975201AAE2C6400C9FB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D92975211AAE2C6400C9FB8F /* AMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAppDelegate.swift; sourceTree = "<group>"; };
 		D92975231AAE2C6400C9FB8F /* AMMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMMainViewController.swift; sourceTree = "<group>"; };
 		D92975281AAE2C6400C9FB8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D929752B1AAE2C6400C9FB8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D92975311AAE2C6400C9FB8F /* currencyConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = currencyConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92975311AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverter.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92975361AAE2C6400C9FB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D92975371AAE2C6400C9FB8F /* currencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencyConverterTests.swift; sourceTree = "<group>"; };
 		D9A78AD41AB47CF10073E345 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currency.swift; path = Images.xcassets/Currency.swift; sourceTree = "<group>"; };
@@ -68,8 +68,8 @@
 		D929751D1AAE2C6400C9FB8F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D929751C1AAE2C6400C9FB8F /* currencyConverter.app */,
-				D92975311AAE2C6400C9FB8F /* currencyConverterTests.xctest */,
+				D929751C1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename.app */,
+				D92975311AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_renameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,9 +115,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D929751B1AAE2C6400C9FB8F /* currencyConverter */ = {
+		D929751B1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D929753B1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "currencyConverter" */;
+			buildConfigurationList = D929753B1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "CurrencyConverter.temp_caseinsensitive_rename" */;
 			buildPhases = (
 				D92975181AAE2C6400C9FB8F /* Sources */,
 				D92975191AAE2C6400C9FB8F /* Frameworks */,
@@ -127,14 +127,14 @@
 			);
 			dependencies = (
 			);
-			name = currencyConverter;
+			name = CurrencyConverter.temp_caseinsensitive_rename;
 			productName = currencyConverter;
-			productReference = D929751C1AAE2C6400C9FB8F /* currencyConverter.app */;
+			productReference = D929751C1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D92975301AAE2C6400C9FB8F /* currencyConverterTests */ = {
+		D92975301AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_renameTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D929753E1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "currencyConverterTests" */;
+			buildConfigurationList = D929753E1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "CurrencyConverter.temp_caseinsensitive_renameTests" */;
 			buildPhases = (
 				D929752D1AAE2C6400C9FB8F /* Sources */,
 				D929752E1AAE2C6400C9FB8F /* Frameworks */,
@@ -145,9 +145,9 @@
 			dependencies = (
 				D92975331AAE2C6400C9FB8F /* PBXTargetDependency */,
 			);
-			name = currencyConverterTests;
+			name = CurrencyConverter.temp_caseinsensitive_renameTests;
 			productName = currencyConverterTests;
-			productReference = D92975311AAE2C6400C9FB8F /* currencyConverterTests.xctest */;
+			productReference = D92975311AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D92975171AAE2C6400C9FB8F /* Build configuration list for PBXProject "currencyConverter" */;
+			buildConfigurationList = D92975171AAE2C6400C9FB8F /* Build configuration list for PBXProject "CurrencyConverter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,8 +182,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D929751B1AAE2C6400C9FB8F /* currencyConverter */,
-				D92975301AAE2C6400C9FB8F /* currencyConverterTests */,
+				D929751B1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename */,
+				D92975301AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_renameTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,7 +231,7 @@
 /* Begin PBXTargetDependency section */
 		D92975331AAE2C6400C9FB8F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D929751B1AAE2C6400C9FB8F /* currencyConverter */;
+			target = D929751B1AAE2C6400C9FB8F /* CurrencyConverter.temp_caseinsensitive_rename */;
 			targetProxy = D92975321AAE2C6400C9FB8F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -332,7 +332,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = currencyConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CurrencyConverter.temp_caseinsensitive_rename;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -344,7 +344,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = currencyConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CurrencyConverter.temp_caseinsensitive_rename;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -363,7 +363,7 @@
 				);
 				INFOPLIST_FILE = currencyConverterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CurrencyConverter.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/currencyConverter.app/currencyConverter";
 			};
 			name = Debug;
@@ -378,7 +378,7 @@
 				);
 				INFOPLIST_FILE = currencyConverterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CurrencyConverter.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/currencyConverter.app/currencyConverter";
 			};
 			name = Release;
@@ -386,7 +386,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D92975171AAE2C6400C9FB8F /* Build configuration list for PBXProject "currencyConverter" */ = {
+		D92975171AAE2C6400C9FB8F /* Build configuration list for PBXProject "CurrencyConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D92975391AAE2C6400C9FB8F /* Debug */,
@@ -395,7 +395,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D929753B1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "currencyConverter" */ = {
+		D929753B1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "CurrencyConverter.temp_caseinsensitive_rename" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D929753C1AAE2C6400C9FB8F /* Debug */,
@@ -404,7 +404,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D929753E1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "currencyConverterTests" */ = {
+		D929753E1AAE2C6400C9FB8F /* Build configuration list for PBXNativeTarget "CurrencyConverter.temp_caseinsensitive_renameTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D929753F1AAE2C6400C9FB8F /* Debug */,
