@@ -14,7 +14,7 @@ class AMMainViewController: UIViewController {
     let convertFromRates = UISegmentedControl(items: CurrencyTypes.allValues())
     let convertToRates = UISegmentedControl(items: CurrencyTypes.allValues())
     
-    let convertedOutput = UILabel()
+    let convertedOutput = UITextField()
     
     var selectedCurrentCurrencyType = CurrencyTypes.USDollar
     var selectedConversionCurrencyType = CurrencyTypes.EuropeanEuro
@@ -23,6 +23,7 @@ class AMMainViewController: UIViewController {
     var to: String?
     var val: Int?
     var exchangeRate: Double!
+    var dumbQuestion: String?
 
     
     
@@ -51,40 +52,78 @@ enum CurrencyTypes: String {
         addCurrentRate()
         addReturnrate()
         returnOutput()
-        getCurrencyData()
-        println(self.exchangeRate)
+        performConversion()
         
         //add more options
     }
     
-    func getCurrencyData() {
+    func getCurrencyData(#baseCurrency: String, foreignCurrency: String, completion: ((result:Double?) -> Void)!)  {
         //http://www.freecurrencyconverterapi.com/api/v3/convert?q=USD_PHP
-        let convertToRates = "convert?q=USD_EUR"
-        let baseURL = NSURL(string: "http://www.freecurrencyconverterapi.com/api/v3/")
-        let currencyURL = NSURL(string: "\(convertToRates)", relativeToURL: baseURL)
-        let sharedSession = NSURLSession.sharedSession()
-        println(sharedSession)
-        println(currencyURL)
-        let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(currencyURL!, completionHandler: { ( location: NSURL!, response:NSURLResponse!, error: NSError!) -> Void in
-        let dataObject = NSData(contentsOfURL: location!)
-            println(dataObject)
-        let currencyDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
-            if let results = currencyDictionary["results"] as? NSDictionary {
-            println(results)
-                if let results2 = results["USD_EUR"] as? NSDictionary {
-                    println(results2)
-                    if let multiplierRate = results2["val"] as? Double{
-                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.exchangeRate = multiplierRate
-                            println(self.exchangeRate)
-                        })
+        
+        let defaultURL = "http://www.freecurrencyconverterapi.com/api/v3/convert?q="
+        let convertToRates = baseCurrency + "_" + foreignCurrency
+        let completeURL = defaultURL + convertToRates
+        
+        if let URL = NSURL(string: completeURL) {
+            NSURLSession.sharedSession().dataTaskWithURL(URL) { data, response, error in
+                if ((data) != nil) {
+                    let jsonDictionary:NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary
+                    
+                    if let results = jsonDictionary["results"] as? NSDictionary {
+                        if let queryResults = results[convertToRates] as? NSDictionary{
+                            if let exchangeRate = queryResults["val"] as? Double{
+                                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                                    dispatch_async(dispatch_get_main_queue()) {
+                                        completion(result: exchangeRate)
+                                        
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+                else {
+                    completion(result: nil)
+                }
                 
-            }
-            
-        })
-        downloadTask.resume()
+                if ((error) != nil){
+                    completion(result: nil)
+                }
+                
+                }.resume()
+        }
+        
+        
+        
+        
+        
+        //let baseURL = NSURL(string: )
+        
+//        let currencyURL = NSURL(string: completeURL)
+//        let sharedSession = NSURLSession.sharedSession()
+//      
+//        let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(currencyURL!, completionHandler: { ( location: NSURL!, response:NSURLResponse!, error: NSError!) -> Void in
+//        let dataObject = NSData(contentsOfURL: location!)
+//            println(dataObject)
+//        let currencyDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
+//            if let results = currencyDictionary["results"] as? NSDictionary {
+//            println(results)
+//                if let results2 = results["USD_EUR"] as? NSDictionary {
+//                    println(results2)
+//                    if let multiplierRate = results2["val"] as? Double{
+//                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            println("MultiplerRate \(multiplierRate)")
+//                            //return multiplierRate
+//                        })
+//                    }
+//                }
+//                
+//            }
+//            
+//        })
+//        downloadTask.resume()
+    
     }
     
     
@@ -100,6 +139,29 @@ enum CurrencyTypes: String {
 //        })
 //        return dataOutput
 //    }
+    
+    
+    func performConversion(){
+        //1. Amount
+        let inputAmount = conversionInput.text
+        
+        if convertFromRates == convertToRates {
+            convertedOutput.text = conversionInput.text
+        }
+        else {
+            getCurrencyData(baseCurrency: "EUR", foreignCurrency: "USD") { (result) -> Void in
+                if let exchangeRate = result {
+                    let localAmount = (self.conversionInput.text as NSString).doubleValue
+                    let finalAmount = localAmount * exchangeRate
+                    self.convertedOutput.text = String(format:"%.3f", finalAmount)
+                    println(exchangeRate)
+                }
+            }
+
+        }
+        //2. Rate: Parameters ( FROM AND TO)
+    }
+    
     func addConversionInputField(){
         conversionInput.frame = CGRectZero
         conversionInput.layer.borderWidth = 1.0
