@@ -124,7 +124,7 @@ enum CurrencyTypes: String {
         baseCurrencyInput.layer.borderWidth = 1.0
         baseCurrencyInput.layer.borderColor = UIColor.blackColor().CGColor
         baseCurrencyInput.text = String(format: "%0.2f", 1.0)
-        baseCurrencyInput.textAlignment = .Right
+        baseCurrencyInput.textAlignment = .Center
         baseCurrencyInput.layer.cornerRadius = 5.0
         baseCurrencyInput.sizeToFit()
         baseCurrencyInput.layer.sublayerTransform = CATransform3DMakeTranslation(-10, 0, 0)
@@ -152,7 +152,8 @@ enum CurrencyTypes: String {
     
     func returnOutput(){
         
-        foreignCurrencyOutput.text = "Output"
+        foreignCurrencyOutput.text = ""
+        foreignCurrencyOutput.textAlignment = .Center
         view.addSubview(foreignCurrencyOutput)
     }
 
@@ -223,7 +224,7 @@ enum CurrencyTypes: String {
         
         baseCurrencyInput.frame = CGRectMake(0, 0, minFrame * 0.60, minFrame * 0.10)
         baseCurrencyInput.center.x = view.center.x
-        baseCurrencyInput.center.y = minFrame * 0.15
+        baseCurrencyInput.center.y = minFrame * 0.25
         baseCurrencyInput.frame.maxY
         
         baseRate.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
@@ -236,7 +237,7 @@ enum CurrencyTypes: String {
         
         foreignCurrencyOutput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
         foreignCurrencyOutput.center.x = view.center.x
-        foreignCurrencyOutput.center.y = minFrame * 0.70
+        foreignCurrencyOutput.center.y = foreignRate.center.y + 100
         
     }
     
