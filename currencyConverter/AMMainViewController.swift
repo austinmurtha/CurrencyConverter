@@ -10,11 +10,11 @@ import UIKit
 
 class AMMainViewController: UIViewController {
     
-    let conversionInput = UITextField()
+    let baseCurrencyInput = UITextField()
     let baseRate = UISegmentedControl(items: CurrencyTypes.allValues())
     let foreignRate = UISegmentedControl(items: CurrencyTypes.allValues())
     
-    let convertedOutput = UITextField()
+    let foreignCurrencyOutput = UITextField()
     
     var baseCurrencySelection = CurrencyTypes.USDollar
     var foreignCurrencySelection = CurrencyTypes.EuropeanEuro
@@ -44,9 +44,9 @@ enum CurrencyTypes: String {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
-        baseRate.addTarget(self, action: "baseCurrencyChange:", forControlEvents: .ValueChanged)
-        foreignRate.addTarget(self, action: "convertedCurrency:", forControlEvents: .ValueChanged)
+        view.backgroundColor = UIColor.lightGrayColor()
+        baseRate.addTarget(self, action: "baseCurrencySelected:", forControlEvents: .ValueChanged)
+        foreignRate.addTarget(self, action: "foreignCurrencySelected:", forControlEvents: .ValueChanged)
         addConversionInputField()
         addBaseRate()
         addForeignRate()
@@ -97,20 +97,20 @@ enum CurrencyTypes: String {
     
     func performConversion(){
         //1. Amount
-        let inputAmount = conversionInput.text
+        let inputAmount = baseCurrencyInput.text
         if baseRate.selectedSegmentIndex == foreignRate.selectedSegmentIndex {
-            convertedOutput.text = conversionInput.text
+            foreignCurrencyOutput.text = baseCurrencyInput.text
             println("Same value selected")
         }
         else {
             getCurrencyData(baseCurrency: baseCurrencySelection.rawValue, foreignCurrency: foreignCurrencySelection.rawValue) { (result) -> Void in
                 println(self.baseCurrencySelection.rawValue)
                 println(self.foreignCurrencySelection.rawValue)
-                println(self.conversionInput.text)
+                println(self.baseCurrencyInput.text)
                 if let exchangeRate = result {
-                    let localAmount = (self.conversionInput.text as NSString).doubleValue
+                    let localAmount = (self.baseCurrencyInput.text as NSString).doubleValue
                     let finalAmount = localAmount * exchangeRate
-                    self.convertedOutput.text = String(format:"%.3f", finalAmount)
+                    self.foreignCurrencyOutput.text = String(format:"%.3f", finalAmount)
                     println("In currenctData \(exchangeRate)")
                 }
             }
@@ -120,16 +120,16 @@ enum CurrencyTypes: String {
     }
     
     func addConversionInputField(){
-        conversionInput.frame = CGRectZero
-        conversionInput.layer.borderWidth = 1.0
-        conversionInput.layer.borderColor = UIColor.blackColor().CGColor
-        conversionInput.text = String(format: "%0.2f", 1.0)
-        conversionInput.textAlignment = .Right
-        conversionInput.layer.cornerRadius = 5.0
-        conversionInput.sizeToFit()
-        conversionInput.layer.sublayerTransform = CATransform3DMakeTranslation(-10, 0, 0)
+        baseCurrencyInput.frame = CGRectZero
+        baseCurrencyInput.layer.borderWidth = 1.0
+        baseCurrencyInput.layer.borderColor = UIColor.blackColor().CGColor
+        baseCurrencyInput.text = String(format: "%0.2f", 1.0)
+        baseCurrencyInput.textAlignment = .Right
+        baseCurrencyInput.layer.cornerRadius = 5.0
+        baseCurrencyInput.sizeToFit()
+        baseCurrencyInput.layer.sublayerTransform = CATransform3DMakeTranslation(-10, 0, 0)
         
-        view.addSubview(conversionInput)
+        view.addSubview(baseCurrencyInput)
         
     }
     
@@ -146,18 +146,19 @@ enum CurrencyTypes: String {
     func addForeignRate(){
         
         foreignRate.selectedSegmentIndex = 1
+        foreignRate.tintColor = UIColor.blackColor()
         view.addSubview(foreignRate)
     }
     
     func returnOutput(){
         
-        convertedOutput.text = "Output"
-        view.addSubview(convertedOutput)
+        foreignCurrencyOutput.text = "Output"
+        view.addSubview(foreignCurrencyOutput)
     }
 
     
     
-    func baseCurrencyChange(sender: UISegmentedControl){
+    func baseCurrencySelected(sender: UISegmentedControl){
         //Determine which currency was selected.
         switch sender.selectedSegmentIndex {
          case 0:
@@ -186,7 +187,7 @@ enum CurrencyTypes: String {
         
     }
     
-    func convertedCurrency(sender: UISegmentedControl){
+    func foreignCurrencySelected(sender: UISegmentedControl){
         //Determine which currency was selected.
         switch sender.selectedSegmentIndex {
         case 0:
@@ -220,27 +221,28 @@ enum CurrencyTypes: String {
         var minFrame = min(view.frame.width, view.frame.height)
         //var conversionInputFrame = conversionInput(view.frame.width, view.frame.height)
         
-        conversionInput.frame = CGRectMake(0, 0, minFrame * 0.60, minFrame * 0.10)
-        conversionInput.center.x = view.center.x
-        conversionInput.center.y = minFrame * 0.15
-        conversionInput.frame.maxY
+        baseCurrencyInput.frame = CGRectMake(0, 0, minFrame * 0.60, minFrame * 0.10)
+        baseCurrencyInput.center.x = view.center.x
+        baseCurrencyInput.center.y = minFrame * 0.15
+        baseCurrencyInput.frame.maxY
         
         baseRate.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
         baseRate.center.x = view.center.x
-        baseRate.center.y =  conversionInput.center.y + minFrame * 0.20
+        baseRate.center.y =  baseCurrencyInput.center.y + minFrame * 0.20
     
         foreignRate.frame = CGRectMake(25, 25, minFrame * 0.60, minFrame * 0.10)
         foreignRate.center.x = view.center.x
         foreignRate.center.y = minFrame * 0.60
         
-        convertedOutput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
-        convertedOutput.center.x = view.center.x
-        convertedOutput.center.y = minFrame * 0.70
+        foreignCurrencyOutput.frame = CGRectMake(65, 65, minFrame * 0.60, minFrame * 0.10)
+        foreignCurrencyOutput.center.x = view.center.x
+        foreignCurrencyOutput.center.y = minFrame * 0.70
         
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        conversionInput.resignFirstResponder()
+        baseCurrencyInput.resignFirstResponder()
+    
     }
 
 }
